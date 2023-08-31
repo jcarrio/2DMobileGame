@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc0145c45ed53ee419d712e2e3c8b943, type: 3}
+  m_Name: TileRule_Ground
+  m_EditorClassIdentifier: 
+  m_DefaultSprite: {fileID: 21300000, guid: 83d0ebf4d38b7e342bb8ba8a9a28d5ed, type: 3}
+  m_DefaultColliderType: 1
+  m_TilingRules:
+  - m_Neighbors: 0000000002000000000000000200000001000000000000000100000000000000
+    m_Sprites:
+    - {fileID: 21300072, guid: 6e1db66fc7e57884380659e0a55351f0, type: 3}
+    m_AnimationSpeed: 1
+    m_PerlinScale: 0.5
+    m_AutoTransform: 0
+    m_Output: 0
+    m_ColliderType: 1
+  - m_Neighbors: 0000000002000000000000000100000001000000000000000100000000000000
+    m_Sprites:
+    - {fileID: 21300170, guid: 6e1db66fc7e57884380659e0a55351f0, type: 3}
+    - {fileID: 21300074, guid: 6e1db66fc7e57884380659e0a55351f0, type: 3}
+    - {fileID: 21300076, guid: 6e1db66fc7e57884380659e0a55351f0, type: 3}
+    - {fileID: 21300172, guid: 6e1db66fc7e57884380659e0a55351f0, type: 3}
+    - {fileID: 21300080, guid: 6e1db66fc7e57884380659e0a55351f0, type: 3}
+    - {fileID: 21300082, guid: 6e1db66fc7e57884380659e0a55351f0, type: 3}
+    - {fileID: 21300014, guid: 6e1db66fc7e57884380659e0a55351f0, type: 3}
+    m_AnimationSpeed: 1
+    m_PerlinScale: 0.5
+    m_AutoTransform: 0
+    m_Output: 1
+    m_ColliderType: 1
+  - m_Neighbors: 0000000002000000000000000100000002000000000000000100000000000000
+    m_Sprites:
+    - {fileID: 21300174, guid: 6e1db66fc7e57884380659e0a55351f0, type: 3}
+    m_AnimationSpeed: 1
+    m_PerlinScale: 0.5
+    m_AutoTransform: 0
+    m_Output: 0
+    m_ColliderType: 1
+  - m_Neighbors: 0000000001000000000000000100000001000000000000000100000000000000
+    m_Sprites:
+    - {fileID: 21300110, guid: 6e1db66fc7e57884380659e0a55351f0, type: 3}
+    - {fileID: 21300050, guid: 6e1db66fc7e57884380659e0a55351f0, type: 3}
+    - {fileID: 21300058, guid: 6e1db66fc7e57884380659e0a55351f0, type: 3}
+    - {fileID: 21300060, guid: 6e1db66fc7e57884380659e0a55351f0, type: 3}
+    - {fileID: 21300112, guid: 6e1db66fc7e57884380659e0a55351f0, type: 3}
+    - {fileID: 21300064, guid: 6e1db66fc7e57884380659e0a55351f0, type: 3}
+    - {fileID: 21300066, guid: 6e1db66fc7e57884380659e0a55351f0, type: 3}
+    m_AnimationSpeed: 1
+    m_PerlinScale: 0.5
+    m_AutoTransform: 0
+    m_Output: 1
+    m_ColliderType: 1
