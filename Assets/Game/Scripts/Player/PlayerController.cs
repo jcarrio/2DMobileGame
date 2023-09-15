@@ -6,14 +6,13 @@ using Platformer2D.Character;
 [RequireComponent(typeof(CharacterMovement2D))]
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(PlayerInput))]
+[RequireComponent(typeof(GameController))]
 public class PlayerController : MonoBehaviour
 {
     CharacterMovement2D playerMovement;
     SpriteRenderer spriteRenderer;
     PlayerInput playerInput;
-
-    public Sprite crouchedSprite;
-    public Sprite idleSprite;
+    GameController gameController;
 
     [Header("Camera")]
     public Transform cameraTarget;
@@ -30,6 +29,7 @@ public class PlayerController : MonoBehaviour
         playerMovement = GetComponent<CharacterMovement2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerInput = GetComponent<PlayerInput>();
+        gameController = GetComponent<GameController>();
     }
 
     // Update is called once per frame
@@ -62,16 +62,10 @@ public class PlayerController : MonoBehaviour
         if (playerInput.IsCrouchButtonDown())
         {
             playerMovement.Crouch();
-
-            //TODO: Remover quando adicionarmos animação
-            spriteRenderer.sprite = crouchedSprite;
         }
         if (playerInput.IsCrouchButtonUp() == true)
         {
             playerMovement.UnCrouch();
-
-            //TODO: Remover quando adicionarmos animação
-            spriteRenderer.sprite = idleSprite;
         }
     }
 
@@ -83,5 +77,10 @@ public class PlayerController : MonoBehaviour
 
         currentOffsetX += playerMovement.CurrentVelocity.x * Time.fixedDeltaTime * characterSpeedInfluence;
         cameraTarget.localPosition = new Vector3(currentOffsetX, cameraTarget.localPosition.y, cameraTarget.localPosition.z);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        gameController.GameOver();
     }
 }
