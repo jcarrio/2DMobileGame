@@ -5030,6 +5030,7 @@ GameObject:
   - component: {fileID: 755210925}
   - component: {fileID: 755210927}
   - component: {fileID: 755210928}
+  - component: {fileID: 755210929}
   m_Layer: 0
   m_Name: Chomper
   m_TagString: Untagged
@@ -5174,7 +5175,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &755210923
 MonoBehaviour:
@@ -5293,10 +5294,12 @@ MonoBehaviour:
     - {fileID: 755210924}
     - {fileID: 1500065692}
     - {fileID: 755210923}
+    - {fileID: 755210929}
     objectParamsNames:
     - AIController
     - Player
     - CharacterMovement
+    - AIVision
     objectParamsLostDefaultValue: 
     layerMaskParams: []
     layerMaskParamsNames: []
@@ -5327,6 +5330,20 @@ MonoBehaviour:
     quaternionParams: []
     quaternionParamsNames: []
     quaternionParamsLostDefaultValue: 
+--- !u!114 &755210929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755210918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbe65d94de2f82f4da70e4ff47fb792f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visionRange: 5.89
+  visionAngle: 55
 --- !u!1 &1153168402
 GameObject:
   m_ObjectHideFlags: 0
