@@ -4,13 +4,13 @@ using UnityEngine;
 using Platformer2D.Character;
 
 [RequireComponent(typeof(CharacterMovement2D))]
-[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(CharacterFacing2D))]
 [RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(GameController))]
 public class PlayerController : MonoBehaviour
 {
     CharacterMovement2D playerMovement;
-    SpriteRenderer spriteRenderer;
+    CharacterFacing2D playerFacing;
     PlayerInput playerInput;
     GameController gameController;
 
@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerMovement = GetComponent<CharacterMovement2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        playerFacing = GetComponent<CharacterFacing2D>();
         playerInput = GetComponent<PlayerInput>();
         gameController = GetComponent<GameController>();
     }
@@ -39,14 +39,7 @@ public class PlayerController : MonoBehaviour
         Vector2 movementInput = playerInput.GetMovementInput();
         playerMovement.ProcessMovementInput(movementInput);
 
-        if (movementInput.x > 0)
-        {
-            spriteRenderer.flipX = false;
-        }
-        else if (movementInput.x < 0)
-        {
-            spriteRenderer.flipX = true;
-        }
+        playerFacing.UpdateFacing(movementInput);
 
         // Pulo
         if (playerInput.IsJumpButtonDown())
@@ -71,8 +64,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        bool isFacingRight = spriteRenderer.flipX == false;
-        float targetOffsetX = isFacingRight ? cameraTargetOffsetX : -cameraTargetOffsetX;
+        float targetOffsetX = playerFacing.IsFacingRight() ? cameraTargetOffsetX : -cameraTargetOffsetX;
         float currentOffsetX = Mathf.Lerp(cameraTarget.localPosition.x, targetOffsetX, Time.fixedDeltaTime * cameraTargetFlipSpeed);
 
         currentOffsetX += playerMovement.CurrentVelocity.x * Time.fixedDeltaTime * characterSpeedInfluence;
