@@ -15,13 +15,21 @@ public class PlayerController : MonoBehaviour
     GameController gameController;
 
     [Header("Camera")]
-    public Transform cameraTarget;
+
+    [SerializeField]
+    private Transform cameraTarget;
+
     [Range(0.0f, 5.0f)]
-    public float cameraTargetOffsetX = 2.0f;
+    [SerializeField]
+    private float cameraTargetOffsetX = 2.0f;
+
     [Range(0.5f, 50.0f)]
-    public float cameraTargetFlipSpeed = 5.0f;
+    [SerializeField]
+    private float cameraTargetFlipSpeed = 5.0f;
+
     [Range(0.0f, 5.0f)]
-    public float characterSpeedInfluence = 0.5f;
+    [SerializeField]
+    private float characterSpeedInfluence = 0.5f;
 
     // Start is called before the first frame update
     void Start()
