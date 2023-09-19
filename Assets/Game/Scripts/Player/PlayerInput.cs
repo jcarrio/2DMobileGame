@@ -63,7 +63,8 @@ public class PlayerInput : MonoBehaviour
     public bool IsLookingUpButtonDown()
     {
         bool isKeyboardButtonDown = Input.GetAxisRaw(PlayerInputConstants.Vertical) > 0;
-        bool isMobileButtonDown = CrossPlatformInputManager.GetAxisRaw(PlayerInputConstants.Vertical) > 0;
+        //somente quando controle está muito para cima
+        bool isMobileButtonDown = CrossPlatformInputManager.GetAxisRaw(PlayerInputConstants.Vertical) > 0.9f;
 
         return isKeyboardButtonDown || isMobileButtonDown;
     }

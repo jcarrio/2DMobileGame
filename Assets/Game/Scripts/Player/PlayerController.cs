@@ -67,12 +67,21 @@ public class PlayerController : MonoBehaviour
     {
         // Movimentação
         Vector2 movementInput = playerInput.GetMovementInput();
-        playerMovement.ProcessMovementInput(movementInput);
+
+        //só processa movimentos se não estiver olhando pra cima
+        if (isAlreadyLookingAbove)
+        {
+            playerMovement.StopImmediately();
+        }
+        else
+        {
+            playerMovement.ProcessMovementInput(movementInput);
+        }
 
         playerFacing.UpdateFacing(movementInput);
 
         // Pulo
-        if (playerInput.IsJumpButtonDown())
+        if (playerInput.IsJumpButtonDown() && !playerInput.IsLookingUpButtonDown())
         {
             playerMovement.Jump();
         }
@@ -118,6 +127,7 @@ public class PlayerController : MonoBehaviour
             // deixou de olhar pra cima? desfaz soma feita quando estava olhando
             if (!playerInput.IsLookingUpButtonDown())
             {
+                
                 currentY -= amountCameraShiftAbove;
                 isAlreadyLookingAbove = false;
             }
@@ -125,7 +135,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             // passou a olhar pra cima? soma valor para deslocar camera para cima
-            if (playerInput.IsLookingUpButtonDown())
+            if (playerInput.IsLookingUpButtonDown() && playerMovement.IsGrounded)
             {
                 currentY += amountCameraShiftAbove;
                 isAlreadyLookingAbove = true;
