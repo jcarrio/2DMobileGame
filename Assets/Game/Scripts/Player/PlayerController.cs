@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     GameController gameController;
     IDamageable damageable;
 
+    private bool isAlreadyLookingAbove = false;
+    private bool isAlreadyLookingBelow = false;
+
     [Header("Camera")]
 
     [SerializeField]
@@ -32,6 +35,12 @@ public class PlayerController : MonoBehaviour
     [Range(0.0f, 5.0f)]
     [SerializeField]
     private float characterSpeedInfluence = 0.5f;
+
+    [SerializeField]
+    private float amountCameraShiftAbove = 2.0f;
+
+    [SerializeField]
+    private float AmountCameraShiftBelow = 3.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -89,7 +98,10 @@ public class PlayerController : MonoBehaviour
         float currentOffsetX = Mathf.Lerp(cameraTarget.localPosition.x, targetOffsetX, Time.fixedDeltaTime * cameraTargetFlipSpeed);
 
         currentOffsetX += playerMovement.CurrentVelocity.x * Time.fixedDeltaTime * characterSpeedInfluence;
-        cameraTarget.localPosition = new Vector3(currentOffsetX, cameraTarget.localPosition.y, cameraTarget.localPosition.z);
+
+        float localPositionY = CameraShift(cameraTarget.localPosition.y);
+//        cameraTarget.localPosition = new Vector3(currentOffsetX, cameraTarget.localPosition.y, cameraTarget.localPosition.z);
+        cameraTarget.localPosition = new Vector3(currentOffsetX, localPositionY, cameraTarget.localPosition.z);
     }
 
     private void OnDeath()
@@ -97,5 +109,46 @@ public class PlayerController : MonoBehaviour
         playerMovement.StopImmediately();
         enabled = false;
         gameController.GameOver();
+    }
+
+    private float CameraShift(float currentY)
+    {
+        if (isAlreadyLookingAbove)
+        {
+            // deixou de olhar pra cima? desfaz soma feita quando estava olhando
+            if (!playerInput.IsLookingUpButtonDown())
+            {
+                currentY -= amountCameraShiftAbove;
+                isAlreadyLookingAbove = false;
+            }
+        }
+        else
+        {
+            // passou a olhar pra cima? soma valor para deslocar camera para cima
+            if (playerInput.IsLookingUpButtonDown())
+            {
+                currentY += amountCameraShiftAbove;
+                isAlreadyLookingAbove = true;
+            }
+        }
+        if (isAlreadyLookingBelow)
+        {
+            // deixou de ficar agachado? desfaz subtração feita quando estava agachado
+            if (!playerInput.IsCrouchButtonDown())
+            {
+                currentY += AmountCameraShiftBelow;
+                isAlreadyLookingBelow = false;
+            }
+        }
+        else
+        {
+            // passou a ficar agachado? subtrai valor para deslocar camera para baixo
+            if (playerInput.IsCrouchButtonDown())
+            {
+                currentY -= AmountCameraShiftBelow;
+                isAlreadyLookingBelow = true;
+            }
+        }
+        return currentY;
     }
 }

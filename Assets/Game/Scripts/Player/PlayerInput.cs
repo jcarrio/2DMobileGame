@@ -42,7 +42,9 @@ public class PlayerInput : MonoBehaviour
 
     public bool IsCrouchButtonDown()
     {
-        bool isKeyboardButtonDown = Input.GetKeyDown(KeyCode.S);
+        //bool isKeyboardButtonDown = Input.GetKeyDown(KeyCode.S);
+        //troquei a tecla de S para seta para baixo (controle)
+        bool isKeyboardButtonDown = Input.GetAxisRaw(PlayerInputConstants.Vertical) < 0;
         bool isMobileButtonDown = CrossPlatformInputManager.GetAxisRaw(PlayerInputConstants.Vertical) < 0;
 
         return isKeyboardButtonDown || isMobileButtonDown;
@@ -50,9 +52,19 @@ public class PlayerInput : MonoBehaviour
 
     public bool IsCrouchButtonUp()
     {
-        bool isKeyboardButtonUp = Input.GetKey(KeyCode.S) == false;
+        //bool isKeyboardButtonUp = Input.GetKey(KeyCode.S) == false;
+        //troquei a tecla de S para seta para baixo (controle)
+        bool isKeyboardButtonUp = Input.GetAxisRaw(PlayerInputConstants.Vertical) >= 0;
         bool isMobileButtonUp = CrossPlatformInputManager.GetAxisRaw(PlayerInputConstants.Vertical) >= 0;
 
         return isKeyboardButtonUp && isMobileButtonUp;
+    }
+
+    public bool IsLookingUpButtonDown()
+    {
+        bool isKeyboardButtonDown = Input.GetAxisRaw(PlayerInputConstants.Vertical) > 0;
+        bool isMobileButtonDown = CrossPlatformInputManager.GetAxisRaw(PlayerInputConstants.Vertical) > 0;
+
+        return isKeyboardButtonDown || isMobileButtonDown;
     }
 }
