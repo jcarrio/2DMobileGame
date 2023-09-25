@@ -9,12 +9,15 @@ public static class CharacterMovementAnimationKeys
     public const string HorizontalSpeed = "HorizontalSpeed";
     public const string VerticalSpeed = "VerticalSpeed";
     public const string IsGrounded = "IsGrounded";
+    public const string IsAttacking = "IsAttacking";
     public const string TriggerDead = "Dead";
 }
 
 public static class EnemyAnimationKeys
 {
     public const string IsChasing = "IsChasing";
+    public const string IsAttacking = "IsAttacking";
+    public const string TriggerDead = "Dead";
 }
 
 public class CharacterAnimationController : MonoBehaviour

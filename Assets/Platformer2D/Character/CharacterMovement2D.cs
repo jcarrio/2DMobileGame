@@ -193,8 +193,10 @@ namespace Platformer2D.Character
                 }
             }
 
-            isGrounded = currentVelocity.magnitude > 10.0f ? hitCount == 3 : hitCount > 0;
-            
+            //comentários video sistema de ataque
+//            isGrounded = currentVelocity.magnitude > 10.0f ? hitCount == 3 : hitCount > 0;
+            isGrounded = hitCount > 0;
+
             if (isGrounded && !IsJumping)
             {
                 currentVelocity.y = 0;

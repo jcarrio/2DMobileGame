@@ -16,6 +16,11 @@ public class PlayerController : MonoBehaviour
     GameController gameController;
     IDamageable damageable;
 
+    [SerializeField]
+    GameObject weaponObject;
+
+    public IWeapon Weapon { get; private set; }
+
     private bool isAlreadyLookingAbove = false;
     private bool isAlreadyLookingBelow = false;
 
@@ -49,9 +54,14 @@ public class PlayerController : MonoBehaviour
         playerFacing = GetComponent<CharacterFacing2D>();
         playerInput = GetComponent<PlayerInput>();
         gameController = GetComponent<GameController>();
-        damageable = GetComponent<IDamageable>();
 
+        damageable = GetComponent<IDamageable>();
         damageable.DeathEvent += OnDeath;
+
+        if (weaponObject != null)
+        {
+            Weapon = weaponObject.GetComponent<IWeapon>();
+        }
     }
 
     private void OnDestroy()
@@ -99,6 +109,12 @@ public class PlayerController : MonoBehaviour
         {
             playerMovement.UnCrouch();
         }
+
+        // Atacar
+        if (Weapon != null && playerInput.IsAttackButtonDown())
+        {
+            Weapon.Attack();
+        }
     }
 
     private void FixedUpdate()
@@ -119,7 +135,6 @@ public class PlayerController : MonoBehaviour
         enabled = false;
         gameController.GameOver();
     }
-
     private float CameraShift(float currentY)
     {
         if (isAlreadyLookingAbove)

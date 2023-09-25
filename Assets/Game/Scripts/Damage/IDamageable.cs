@@ -5,7 +5,12 @@ using UnityEngine;
 
 public interface IDamageable
 {
-    void TakeDamage(int damage);
-    event Action DeathEvent;
+    int MaxHealth { get; }
+    int CurrentHealth { get; }
     bool IsDead { get; }
+
+    void TakeDamage(int damage);
+
+    event Action DeathEvent;
+    event Action DamageEvent;
 }

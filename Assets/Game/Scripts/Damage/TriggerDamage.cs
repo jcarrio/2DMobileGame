@@ -6,14 +6,39 @@ public class TriggerDamage : MonoBehaviour
 {
     [SerializeField]
     [Min(0)]
-    private int damage = 10;
+    private int damage = 1;
+
+    [SerializeField]
+    private float damageInterval = 1.0f;
+
+    private bool stopDamage;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         IDamageable damageable = collision.GetComponent<IDamageable>();
         if (damageable != null)
         {
+            stopDamage = false;
+            //collision.GetComponent<PlayerController>().StartCoroutine
+            StartCoroutine(takeDamage(damageable));
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        IDamageable damageable = collision.GetComponent<IDamageable>();
+        if (damageable != null)
+        {
+            stopDamage = true;
+        }
+    }
+
+    IEnumerator takeDamage(IDamageable damageable)
+    {
+        while (!stopDamage)
+        {
             damageable.TakeDamage(damage);
+            yield return new WaitForSeconds(damageInterval);
         }
     }
 }

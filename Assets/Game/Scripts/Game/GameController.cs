@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
 
     IEnumerator WaitToLoadScene()
     {
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(1.0f);
         SceneManager.LoadScene("Level_1");
     }
 }

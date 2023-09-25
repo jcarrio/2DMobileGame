@@ -33,7 +33,7 @@ public class AIVision : MonoBehaviour
         Vector2 toTarget = target.transform.position - transform.position;
         Vector2 visionDirection = GetVisionDirection();
 
-        if (Vector2.Angle(visionDirection ,toTarget) > visionAngle /2)
+        if (Vector2.Angle(visionDirection, toTarget) > visionAngle /2)
         {
             return false;
         }
