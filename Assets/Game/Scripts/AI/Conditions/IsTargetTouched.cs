@@ -13,11 +13,22 @@ public class IsTargetTouched : GOCondition
     [InParam("PlayerTouched")]
     private AISense aiSense;
 
+    [InParam("TargetMemoryDuration")]
+    private float targetMemoryDuration;
+
+    private float forgetTargetTime;
+
     public override bool Check()
     {
         bool isAvailable = IsAvailable();
         bool isAttacking = aiSense.IsTouched();
-        return isAttacking && isAvailable;
+
+        if (isAttacking && isAvailable)
+        {
+            forgetTargetTime = Time.time + targetMemoryDuration;
+            return true;
+        }
+        return Time.time < forgetTargetTime && isAvailable;
     }
 
     private bool IsAvailable()
