@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
             playerMovement.ProcessMovementInput(movementInput);
         }
 
-        playerFacing.UpdateFacing(movementInput);
+        playerFacing.UpdateFacing(movementInput, weaponObject);
 
         // Pulo
         if (playerInput.IsJumpButtonDown() && !playerInput.IsLookingUpButtonDown())

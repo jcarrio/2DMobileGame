@@ -62,7 +62,7 @@ public class EnemyAIController : MonoBehaviour
     void Update()
     {
         enemyMovement.ProcessMovementInput(movementInput);
-        enemyFacing.UpdateFacing(movementInput);
+        enemyFacing.UpdateFacing(movementInput, null);
     }
 
     private void OnDeath()
