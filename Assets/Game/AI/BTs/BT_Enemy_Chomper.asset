@@ -35,7 +35,7 @@ MonoBehaviour:
     <child>\r\n              <ActionNode id=\"4\" />\r\n            </child>\r\n         
     </GuardAndNode>\r\n        </elem>\r\n      </children>\r\n      <inputParams
     />\r\n      <outputParams />\r\n      <localParams />\r\n    </PrioritySelectorNode>\r\n   
-    <ConditionEvalNode id=\"19\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"Game/Perception/IsTargetTouched\">\r\n     
+    <ConditionEvalNode id=\"19\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"Game/Perception/IsTargetTouched\">\r\n     
     <inputParams>\r\n        <inputValues>\r\n          <entry name=\"PlayerTouched\"
     type=\"AISense\" isBlackboard=\"True\" blackboard=\"AISense\" />\r\n         
     <entry name=\"Target\" type=\"UnityEngine.GameObject\" isBlackboard=\"True\"
@@ -47,7 +47,7 @@ MonoBehaviour:
     isBlackboard=\"True\" blackboard=\"Player\" />\r\n          <entry name=\"AIController\"
     type=\"EnemyAIController\" isBlackboard=\"True\" blackboard=\"AIController\"
     />\r\n        </inputValues>\r\n      </inputParams>\r\n      <outputParams />\r\n     
-    <localParams />\r\n    </ActionNode>\r\n    <ConditionEvalNode id=\"12\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\"
+    <localParams />\r\n    </ActionNode>\r\n    <ConditionEvalNode id=\"12\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\"
     name=\"Game/Perception/IsTargetVisible\">\r\n      <inputParams>\r\n        <inputValues>\r\n         
     <entry name=\"Target\" type=\"UnityEngine.GameObject\" isBlackboard=\"True\"
     blackboard=\"Player\" />\r\n          <entry name=\"AIVision\" type=\"AIVision\"
@@ -62,7 +62,7 @@ MonoBehaviour:
     value=\"5\" />\r\n          <entry name=\"CharacterMovement\" type=\"Platformer2D.Character.CharacterMovement2D\"
     isBlackboard=\"True\" blackboard=\"CharacterMovement\" />\r\n        </inputValues>\r\n     
     </inputParams>\r\n      <outputParams />\r\n      <localParams />\r\n    </ActionNode>\r\n   
-    <ConditionEvalNode id=\"13\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"AlwaysTrue\">\r\n     
+    <ConditionEvalNode id=\"13\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"AlwaysTrue\">\r\n     
     <inputParams />\r\n      <outputParams />\r\n      <localParams />\r\n    </ConditionEvalNode>\r\n   
     <ActionNode id=\"4\" action=\"Game/Patrol\">\r\n      <inputParams>\r\n       
     <inputValues>\r\n          <entry name=\"AIController\" type=\"EnemyAIController\"

@@ -8,11 +8,13 @@ using UnityEngine.UIElements;
 
 [RequireComponent(typeof(CharacterMovement2D))]
 [RequireComponent(typeof(CharacterFacing2D))]
+[RequireComponent(typeof(TriggerDamage))]
 [RequireComponent(typeof(IDamageable))]
 public class EnemyAIController : MonoBehaviour
 {
     CharacterMovement2D enemyMovement;
     CharacterFacing2D enemyFacing;
+    TriggerDamage damager;
     IDamageable damageable;
 
     private Vector2 movementInput;
@@ -42,6 +44,7 @@ public class EnemyAIController : MonoBehaviour
     {
         enemyMovement = GetComponent<CharacterMovement2D>();
         enemyFacing = GetComponent<CharacterFacing2D>();
+        damager = GetComponent<TriggerDamage>();
         damageable = GetComponent<IDamageable>();
 
         if (damageable != null)
@@ -67,14 +70,9 @@ public class EnemyAIController : MonoBehaviour
 
     private void OnDeath()
     {
-        enemyMovement.StopImmediately();
         enabled = false;
-        StartCoroutine(destroyAfterAnimation());
-    }
-
-    IEnumerator destroyAfterAnimation()
-    {
-        yield return new WaitForSeconds(1.0f);
-        Destroy(gameObject);
+        enemyMovement.StopImmediately();
+        damager.gameObject.SetActive(false);
+        Destroy(gameObject, 0.7f);
     }
 }

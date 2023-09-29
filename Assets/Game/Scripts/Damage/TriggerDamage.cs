@@ -35,7 +35,7 @@ public class TriggerDamage : MonoBehaviour
 
     IEnumerator takeDamage(IDamageable damageable)
     {
-        while (!stopDamage)
+        while (!damageable.IsDead && !stopDamage)
         {
             damageable.TakeDamage(damage);
             yield return new WaitForSeconds(damageInterval);
