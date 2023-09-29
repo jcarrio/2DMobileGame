@@ -8,14 +8,15 @@ using UnityEngine.UIElements;
 
 [RequireComponent(typeof(CharacterMovement2D))]
 [RequireComponent(typeof(CharacterFacing2D))]
-[RequireComponent(typeof(TriggerDamage))]
 [RequireComponent(typeof(IDamageable))]
 public class EnemyAIController : MonoBehaviour
 {
     CharacterMovement2D enemyMovement;
     CharacterFacing2D enemyFacing;
-    TriggerDamage damager;
     IDamageable damageable;
+
+    [SerializeField]
+    private TriggerDamage damager;
 
     private Vector2 movementInput;
     private bool isChasing;
@@ -44,7 +45,6 @@ public class EnemyAIController : MonoBehaviour
     {
         enemyMovement = GetComponent<CharacterMovement2D>();
         enemyFacing = GetComponent<CharacterFacing2D>();
-        damager = GetComponent<TriggerDamage>();
         damageable = GetComponent<IDamageable>();
 
         if (damageable != null)

@@ -5433,7 +5433,6 @@ GameObject:
   - component: {fileID: 755210930}
   - component: {fileID: 755210932}
   - component: {fileID: 755210933}
-  - component: {fileID: 755210934}
   m_Layer: 0
   m_Name: Chomper
   m_TagString: Untagged
@@ -5616,6 +5615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57b971d367b22df4fb521499ed0f04e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damager: {fileID: 1576188188}
 --- !u!114 &755210925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5773,20 +5773,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f9a2ba40bc62e409e08bc2af7734f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &755210934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 755210918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a734f95e7e7172849922ad51996ddf31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 2
-  damageInterval: 1
 --- !u!1 &829483961
 GameObject:
   m_ObjectHideFlags: 0
@@ -6527,6 +6513,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1576188186}
   - component: {fileID: 1576188187}
+  - component: {fileID: 1576188188}
   m_Layer: 0
   m_Name: TriggerDamage
   m_TagString: Untagged
@@ -6594,6 +6581,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5389739, y: 1.206972}
   m_EdgeRadius: 0
+--- !u!114 &1576188188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576188185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a734f95e7e7172849922ad51996ddf31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 3
+  damageInterval: 1
 --- !u!1 &2135153192
 GameObject:
   m_ObjectHideFlags: 0
