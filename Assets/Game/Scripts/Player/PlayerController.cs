@@ -115,6 +115,12 @@ public class PlayerController : MonoBehaviour
         {
             Weapon.Attack();
         }
+
+        // Fechar
+        if (playerInput.IsCloseButtonDown())
+        {
+            Application.Quit();
+        }
     }
 
     private void FixedUpdate()

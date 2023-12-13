@@ -11,6 +11,8 @@ public class PlayerInput : MonoBehaviour
         public const string Vertical = "Vertical";
         public const string Jump = "Jump";
         public const string Attack = "Attack";
+        public const string Fire = "Fire1";
+        public const string Close = "Fire2";
     }
 
     public Vector2 GetMovementInput()
@@ -29,16 +31,18 @@ public class PlayerInput : MonoBehaviour
     {
         bool isKeyboardButtonDown = Input.GetKeyDown(KeyCode.Space);
         bool isMobileButtonDown = CrossPlatformInputManager.GetButtonDown(PlayerInputConstants.Jump);
+        bool isControllerButtonDown = Input.GetButtonDown(PlayerInputConstants.Jump);
 
-        return isKeyboardButtonDown || isMobileButtonDown;
+        return isKeyboardButtonDown || isMobileButtonDown || isControllerButtonDown;
     }
 
     public bool IsJumpButtonHeld()
     {
         bool isKeyboardButtonHeld = Input.GetKey(KeyCode.Space);
         bool isMobileButtonHeld = CrossPlatformInputManager.GetButton(PlayerInputConstants.Jump);
+        bool isControllerButtonHeld = Input.GetButton(PlayerInputConstants.Jump);
 
-        return isKeyboardButtonHeld || isMobileButtonHeld;
+        return isKeyboardButtonHeld || isMobileButtonHeld || isControllerButtonHeld;
     }
 
     public bool IsCrouchButtonDown()
@@ -74,7 +78,17 @@ public class PlayerInput : MonoBehaviour
     {
         bool isKeyboardButtonDown = Input.GetKeyDown(KeyCode.K);
         bool isMobileButtonDown = CrossPlatformInputManager.GetButtonDown(PlayerInputConstants.Attack);
+        bool isControllerButtonDown = Input.GetButtonDown(PlayerInputConstants.Fire);
 
-        return isKeyboardButtonDown || isMobileButtonDown;
+        return isKeyboardButtonDown || isMobileButtonDown || isControllerButtonDown;
+    }
+
+    public bool IsCloseButtonDown()
+    {
+        bool isKeyboardButtonDown = Input.GetKeyDown(KeyCode.Escape);
+//        bool isMobileButtonDown = CrossPlatformInputManager.GetButtonDown(PlayerInputConstants.Back);
+        bool isControllerButtonDown = Input.GetButtonDown(PlayerInputConstants.Close);
+
+        return isKeyboardButtonDown || isControllerButtonDown;
     }
 }
